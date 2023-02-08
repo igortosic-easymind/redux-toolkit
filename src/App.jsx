@@ -6,8 +6,15 @@ import CarList from "./components/CarList";
 import CarSearch from "./components/CarSearch";
 import CarValue from "./components/CarValue";
 import NavBar from "./components/NavBar";
+import { useDispatch } from "react-redux";
+import { reset } from "./store";
 
 export default function App() {
+    const dispatch = useDispatch();
+    const handleResetClick = () => {
+        dispatch(reset());
+        //
+    };
     return (
         <div className="container is-fluid">
             <NavBar />
@@ -16,6 +23,12 @@ export default function App() {
                     path="/"
                     element={
                         <>
+                            <button
+                                onClick={() => handleResetClick()}
+                                className="button is-danger"
+                            >
+                                Reset Both Playlists
+                            </button>
                             <hr />
                             <MoviePlaylist />
                             <hr />
